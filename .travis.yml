@@ -70,9 +70,9 @@ script:
 
 after_script:
   - if [ $TEST_SUITE != "js" ]; then
-      testspace [PHP-${TRAVIS_PHP_VERSION}]testresults.xml{.};
+      testspace [${TEST_SUITE}/PHP-${TRAVIS_PHP_VERSION}]testresults.xml{.};
     elif [ $GRUNT_COMMAND == "spec" ]; then
       for theme in blank luma backend; do
-          testspace [JS-$theme/dev/tests/js/jasmine]var/log/js-unit/$theme/TEST-*.xml{dev/tests/js/jasmine};
+         testspace [${TEST_SUITE}/$theme/dev/tests/js/jasmine]var/log/js-unit/$theme/TEST-*.xml{dev/tests/js/jasmine};
       done
     fi
